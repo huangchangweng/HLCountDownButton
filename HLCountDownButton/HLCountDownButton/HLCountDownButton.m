@@ -31,22 +31,30 @@
     return self;
 }
 
+#if TARGET_INTERFACE_BUILDER
+- (void)prepareForInterfaceBuilder
+{
+    [self setTitle:_normalTitle forState:UIControlStateNormal];
+    [self setupStyle];
+}
+#endif
+
 #pragma mark - Private Method
 
 - (void)build
 {
-    self.normalTitle = @"获取验证码";
-    self.againTitle = @"获取验证码";
-    self.sendingTitleFormat = @"%ds 后获取";
-    self.highlightedColor = UIColorFromHEX(0x4181FE);
-    self.disabledColor = UIColorFromHEX(0xd2d2d2);
-    self.cornerRadius = 4;
-    self.borderWidth = 0.5f;
-    self.hlType = HLCountDownButtonTypeNormal;
-    self.countDownSize = 60;
-    self.hlEnabled = YES;
+    _normalTitle = @"获取验证码";
+    _againTitle = @"获取验证码";
+    _sendingTitleFormat = @"%ds 后获取";
+    _highlightedColor = UIColorFromHEX(0x4181FE);
+    _disabledColor = UIColorFromHEX(0xd2d2d2);
+    _cornerRadius = 4;
+    _borderWidth = 0.5f;
+    _hlType = HLCountDownButtonTypeNormal;
+    _countDownSize = 60;
+    _hlEnabled = YES;
 
-    [self setTitle:self.normalTitle forState:UIControlStateNormal];
+    [self setTitle:_normalTitle forState:UIControlStateNormal];
     [self setupStyle];
     
     [self addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -57,6 +65,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.layer.borderColor = [UIColor clearColor].CGColor;
     self.layer.borderWidth = 0;
+    self.layer.masksToBounds = NO;
     
     // 可用 并 非发送中
     if (self.hlEnabled && (!self.haveBeenIn)) {
@@ -69,12 +78,14 @@
             case HLCountDownButtonTypeOnlyLine:
                 [self setTitleColor:self.highlightedColor forState:UIControlStateNormal];
                 self.layer.cornerRadius = self.cornerRadius;
+                self.layer.masksToBounds = self.cornerRadius > 0;
                 self.layer.borderColor = self.highlightedColor.CGColor;
                 self.layer.borderWidth = self.borderWidth;
                 break;
             case HLCountDownButtonTypeOnlyBackground:
                 [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 self.layer.cornerRadius = self.cornerRadius;
+                self.layer.masksToBounds = self.cornerRadius > 0;
                 self.backgroundColor = self.highlightedColor;
                 break;
         }
@@ -90,12 +101,14 @@
             case HLCountDownButtonTypeOnlyLine:
                 [self setTitleColor:self.disabledColor forState:UIControlStateNormal];
                 self.layer.cornerRadius = self.cornerRadius;
+                self.layer.masksToBounds = self.cornerRadius > 0;
                 self.layer.borderColor = self.disabledColor.CGColor;
                 self.layer.borderWidth = self.borderWidth;
                 break;
             case HLCountDownButtonTypeOnlyBackground:
                 [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 self.layer.cornerRadius = self.cornerRadius;
+                self.layer.masksToBounds = self.cornerRadius > 0;
                 self.backgroundColor = self.disabledColor;
                 break;
         }
@@ -153,54 +166,61 @@
 
 #pragma mark - Setter
 
-- (void)setNormalTitle:(NSString *)normalTitle {
-    _normalTitle = normalTitle;
-
-    [self setTitle:_normalTitle forState:UIControlStateNormal];
-    [self setupStyle];
+- (void)setNormalTitle:(NSString *)normalTitle
+{
+    if (![_normalTitle isEqualToString:normalTitle]) {
+        _normalTitle = normalTitle;
+        [self setTitle:_normalTitle forState:UIControlStateNormal];
+        [self setupStyle];
+    }
 }
 
-- (void)setAgainTitle:(NSString *)againTitle {
-    _againTitle = againTitle;
-    
-    [self setTitle:_againTitle forState:UIControlStateNormal];
-    [self setupStyle];
+- (void)setHighlightedColor:(UIColor *)highlightedColor
+{
+    if (![_highlightedColor isEqual:highlightedColor]) {
+        _highlightedColor = highlightedColor;
+        [self setupStyle];
+    }
 }
 
-- (void)setHighlightedColor:(UIColor *)highlightedColor {
-    _highlightedColor = highlightedColor;
-
-    [self setupStyle];
+- (void)setDisabledColor:(UIColor *)disabledColor
+{
+    if (![_disabledColor isEqual:disabledColor]) {
+        _disabledColor = disabledColor;
+        [self setupStyle];
+    }
 }
 
-- (void)setDisabledColor:(UIColor *)disabledColor {
-    _disabledColor = disabledColor;
-
-    [self setupStyle];
+- (void)setCornerRadius:(CGFloat)cornerRadius
+{
+    if (_cornerRadius != cornerRadius) {
+        _cornerRadius = cornerRadius;
+        [self setupStyle];
+    }
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius {
-    _cornerRadius = cornerRadius;
-
-    [self setupStyle];
+- (void)setBorderWidth:(CGFloat)borderWidth
+{
+    if (_borderWidth != borderWidth) {
+        _borderWidth = borderWidth;
+        [self setupStyle];
+    }
 }
 
-- (void)setBorderWidth:(CGFloat)borderWidth {
-    _borderWidth = borderWidth;
-
-    [self setupStyle];
+- (void)setHlType:(NSInteger)hlType
+{
+    if (_hlType != hlType) {
+        _hlType = hlType;
+        [self setupStyle];
+    }
 }
 
-- (void)setHlType:(NSInteger)hlType {
-    _hlType = hlType;
-
-    [self setupStyle];
-}
-
-- (void)setHlEnabled:(BOOL)hlEnabled {
-    _hlEnabled = hlEnabled;
-
-    [self setupStyle];
+- (void)setHlEnabled:(BOOL)hlEnabled
+{
+    if (_hlEnabled != hlEnabled) {
+        _hlEnabled = hlEnabled;
+        [self setupStyle];
+    }
 }
 
 @end

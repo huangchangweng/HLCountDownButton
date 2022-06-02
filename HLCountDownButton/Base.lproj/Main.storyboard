@@ -28,15 +28,13 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hlEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="countDownSize">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="normalTitle" value="发送验证码"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="hlType">
                                         <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="sendingTitleFormat" value="%ds获取"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="normalTitle" value="获取验证码"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
+                                        <color key="value" red="1" green="0.34509803919999998" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYE-Ht-ae0" customClass="HLCountDownButton">
@@ -89,6 +87,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsZ-l9-h6G" customClass="HLCountDownButton">
+                                <rect key="frame" x="171" y="143" width="72" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -98,7 +102,9 @@
                             <constraint firstItem="Y8g-bU-mzL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="LJ5-dQ-RBA"/>
                             <constraint firstItem="Y8g-bU-mzL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T48-yW-KtQ"/>
                             <constraint firstItem="RRQ-U8-9Iz" firstAttribute="centerX" secondItem="EYE-Ht-ae0" secondAttribute="centerX" id="fKs-mD-fq5"/>
+                            <constraint firstItem="Y8g-bU-mzL" firstAttribute="top" secondItem="LsZ-l9-h6G" secondAttribute="bottom" constant="32" id="wYj-A6-Uph"/>
                             <constraint firstItem="EYE-Ht-ae0" firstAttribute="centerX" secondItem="Y8g-bU-mzL" secondAttribute="centerX" id="yKa-zY-cUU"/>
+                            <constraint firstItem="LsZ-l9-h6G" firstAttribute="centerX" secondItem="Y8g-bU-mzL" secondAttribute="centerX" id="zL1-m1-UTH"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -107,6 +113,20 @@
             <point key="canvasLocation" x="20" y="98"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="EYE-Ht-ae0">
+            <size key="intrinsicContentSize" width="43" height="29"/>
+        </designable>
+        <designable name="LsZ-l9-h6G">
+            <size key="intrinsicContentSize" width="72" height="29"/>
+        </designable>
+        <designable name="RRQ-U8-9Iz">
+            <size key="intrinsicContentSize" width="30" height="29"/>
+        </designable>
+        <designable name="Y8g-bU-mzL">
+            <size key="intrinsicContentSize" width="72" height="29"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

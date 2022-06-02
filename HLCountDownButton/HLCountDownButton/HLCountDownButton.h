@@ -13,7 +13,13 @@ typedef NS_ENUM(NSInteger, HLCountDownButtonType) {
     HLCountDownButtonTypeOnlyBackground,    ///< 有背景，无边框
 };
 
+IB_DESIGNABLE
+
 @interface HLCountDownButton : UIButton
+/// 样式，默认HLCountDownButtonTypeNormal
+@property (nonatomic, assign) IBInspectable NSInteger hlType;
+/// 是否可用，默认YES
+@property (nonatomic, assign) IBInspectable BOOL hlEnabled;
 /// 正常标题，默认“获取验证码”
 @property (nonatomic, copy) IBInspectable NSString *normalTitle;
 /// 重新获取标题，默认“获取验证码”
@@ -28,12 +34,9 @@ typedef NS_ENUM(NSInteger, HLCountDownButtonType) {
 @property (nonatomic, assign) IBInspectable CGFloat cornerRadius;
 /// 边框宽度，默认0.5
 @property (nonatomic, assign) IBInspectable CGFloat borderWidth;
-/// 样式，默认HLCountDownButtonTypeNormal
-@property (nonatomic, assign) IBInspectable NSInteger hlType;
 /// 倒计时长，默认60s
 @property (nonatomic, assign) IBInspectable NSInteger countDownSize;
-/// 是否可用，默认YES
-@property (nonatomic, assign) IBInspectable BOOL hlEnabled;
+
 
 /// 点击回调
 @property (nonatomic, strong) void(^startBlock)(void);
