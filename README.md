@@ -4,12 +4,16 @@
 ##### 支持使用CocoaPods引入, Podfile文件中添加:
 
 ``` objc
-pod 'HLCountDownButton', '1.0.0'
+pod 'HLCountDownButton', '1.0.1'
 ```
 
 基本使用方法:<p>
 
 ``` objc
+/// 样式，默认HLCountDownButtonTypeNormal
+@property (nonatomic, assign) IBInspectable NSInteger hlType;
+/// 是否可用，默认YES
+@property (nonatomic, assign) IBInspectable BOOL hlEnabled;
 /// 正常标题，默认“获取验证码”
 @property (nonatomic, copy) IBInspectable NSString *normalTitle;
 /// 重新获取标题，默认“获取验证码”
@@ -24,12 +28,8 @@ pod 'HLCountDownButton', '1.0.0'
 @property (nonatomic, assign) IBInspectable CGFloat cornerRadius;
 /// 边框宽度，默认0.5
 @property (nonatomic, assign) IBInspectable CGFloat borderWidth;
-/// 样式，默认HLCountDownButtonTypeNormal
-@property (nonatomic, assign) IBInspectable NSInteger hlType;
 /// 倒计时长，默认60s
 @property (nonatomic, assign) IBInspectable NSInteger countDownSize;
-/// 是否可用，默认YES
-@property (nonatomic, assign) IBInspectable BOOL hlEnabled;
 ```
 
 # Requirements
@@ -37,6 +37,10 @@ pod 'HLCountDownButton', '1.0.0'
 iOS 9.0 +, Xcode 7.0 +
 
 # Version
+
+* 1.0.1 :
+
+  修改在xib、storyboard显示问题
     
 * 1.0.0 :
 
