@@ -4,7 +4,7 @@
 ##### 支持使用CocoaPods引入, Podfile文件中添加:
 
 ``` objc
-pod 'HLCountDownButton', '1.0.1'
+pod 'HLCountDownButton', '1.0.2'
 ```
 
 基本使用方法:<p>
@@ -37,10 +37,14 @@ pod 'HLCountDownButton', '1.0.1'
 iOS 9.0 +, Xcode 7.0 +
 
 # Version
+  
+* 1.0.2 :
+
+  修改在xib、storyboard显示问题
 
 * 1.0.1 :
 
-  修改在xib、storyboard显示问题
+  此版本和1.0.0一样，请勿使用此版本
     
 * 1.0.0 :
 
