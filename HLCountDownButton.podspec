@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "HLCountDownButton"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "倒计时按钮，可通过xib、storyboard自定义样式"
 
   # 描述
@@ -23,7 +23,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "9.0"
 
   # git仓库，tag
-  spec.source       = { :git => "https://github.com/huangchangweng/HLCountDownButton.git", :tag => "1.0.0" }
+  spec.source       = { :git => "https://github.com/huangchangweng/HLCountDownButton.git", :tag => spec.version.to_s }
 
   # 资源路径
   spec.source_files  = "HLCountDownButton/HLCountDownButton/*.{h,m}"
