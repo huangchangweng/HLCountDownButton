@@ -6,8 +6,12 @@
 ``` objc
 pod 'HLCountDownButton', '1.0.3'
 ```
+注意：需要在`Podfile`中添加`use_frameworks!`，不然在xib、storyboard中渲染会报以下错误：
 
-基本使用方法:<p>
+```shell
+error: IB Designables: Failed to render and update auto layout status for ViewController (BYZ-38-t0r): Failed to load designables from path (null)
+```
+可设置属性:<p>
 
 ``` objc
 /// 样式，默认HLCountDownButtonTypeNormal
