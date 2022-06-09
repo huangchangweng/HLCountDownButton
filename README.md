@@ -1,10 +1,12 @@
 # HLCountDownButton
 倒计时按钮，可通过xib、storyboard自定义样式
 
+✅  应用切换前后台计时准确
+
 ##### 支持使用CocoaPods引入, Podfile文件中添加:
 
 ``` objc
-pod 'HLCountDownButton', '1.0.3'
+pod 'HLCountDownButton', '1.0.4'
 ```
 注意：需要在`Podfile`中添加`use_frameworks!`，不然在xib、storyboard中渲染会报以下错误：
 
@@ -41,6 +43,10 @@ error: IB Designables: Failed to render and update auto layout status for ViewCo
 iOS 9.0 +, Xcode 7.0 +
 
 # Version
+
+* 1.0.4 :
+
+  修改在应用切换前后台计时不准确问题
   
 * 1.0.3 :
 
@@ -53,7 +59,7 @@ iOS 9.0 +, Xcode 7.0 +
 * 1.0.1 :
 
   此版本和1.0.0一样，请勿使用此版本
-    
+  
 * 1.0.0 :
 
   完成HLCountDownButton基础搭建

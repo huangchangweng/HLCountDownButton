@@ -12,7 +12,9 @@
 @interface HLCountDownButton() {
     dispatch_source_t _timer;
 }
-@property (nonatomic, assign) BOOL haveBeenIn; ///< 发送中
+@property (nonatomic, assign) int timeout;              ///< 倒计时长
+@property (nonatomic, assign) BOOL haveBeenIn;          ///< 发送中
+@property (nonatomic, assign) CFAbsoluteTime lastTime;  ///< 进入后台的绝对时间
 @end
 
 @implementation HLCountDownButton
@@ -39,6 +41,34 @@
 }
 #endif
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidEnterBackgroundNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillEnterForegroundNotification
+                                                  object:nil];
+}
+
+#pragma mark - Noti Method
+
+- (void)applicationDidEnterBackground
+{
+    BOOL backgroudRecord = _timer != nil && self.haveBeenIn;
+    if (backgroudRecord) {
+        self.lastTime = CFAbsoluteTimeGetCurrent();
+    }
+}
+
+- (void)applicationWillEnterForeground
+{
+    BOOL backgroudRecord = _timer != nil && self.haveBeenIn;
+    if (backgroudRecord) {
+        CFAbsoluteTime timeInterval = CFAbsoluteTimeGetCurrent() - self.lastTime;
+        self.timeout -= (int)timeInterval;
+    }
+}
+
 #pragma mark - Private Method
 
 - (void)build
@@ -58,6 +88,16 @@
     [self setupStyle];
     
     [self addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 监听进入前台与进入后台的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
 }
 
 - (void)setupStyle
@@ -132,16 +172,16 @@
     self.userInteractionEnabled = NO;
     self.haveBeenIn = YES;
     
-    __block int timeout = (int)self.countDownSize;//倒计时时间
+    _timeout = (int)self.countDownSize;//倒计时时间
     dispatch_queue_t queue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     _timer = timer;
     if (self.startBlock) {
         self.startBlock();
     }
-    dispatch_source_set_timer(timer,dispatch_walltime(NULL,0),1.0*NSEC_PER_SEC,0); //每秒执行
+    dispatch_source_set_timer(timer, dispatch_walltime(NULL,0), 1.0*NSEC_PER_SEC,0); //每秒执行
     dispatch_source_set_event_handler(timer, ^{
-        if(timeout<=0){//倒计时结束,关闭
+        if(self.timeout <= 0){//倒计时结束,关闭
             dispatch_source_cancel(timer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setTitle:self.againTitle forState:UIControlStateNormal];
@@ -154,11 +194,11 @@
                 //设置界面的按钮显示根据自己需求设置
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:1];
-                [self setTitle:[NSString stringWithFormat:self.sendingTitleFormat, timeout] forState:UIControlStateNormal];
+                [self setTitle:[NSString stringWithFormat:self.sendingTitleFormat, self.timeout] forState:UIControlStateNormal];
                 [UIView commitAnimations];
                 [self setupStyle];
             });
-            timeout--;
+            self.timeout --;
         }
     });
     dispatch_resume(timer);

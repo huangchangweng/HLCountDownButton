@@ -87,8 +87,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsZ-l9-h6G" customClass="HLCountDownButton">
-                                <rect key="frame" x="171" y="143" width="72" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsZ-l9-h6G" customClass="HLCountDownButton">
+                                <rect key="frame" x="171.5" y="143" width="72" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -118,13 +118,13 @@
             <size key="intrinsicContentSize" width="43" height="29"/>
         </designable>
         <designable name="LsZ-l9-h6G">
-            <size key="intrinsicContentSize" width="72" height="29"/>
+            <size key="intrinsicContentSize" width="43" height="29"/>
         </designable>
         <designable name="RRQ-U8-9Iz">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="43" height="29"/>
         </designable>
         <designable name="Y8g-bU-mzL">
-            <size key="intrinsicContentSize" width="72" height="29"/>
+            <size key="intrinsicContentSize" width="43" height="29"/>
         </designable>
     </designables>
     <resources>

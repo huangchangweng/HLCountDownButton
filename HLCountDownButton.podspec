@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "HLCountDownButton"
-  spec.version      = "1.0.3"
+  spec.version      = "1.0.4"
   spec.summary      = "倒计时按钮，可通过xib、storyboard自定义样式"
 
   # 描述
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   
   # 作者
-  spec.author             = { "黄常翁" => "599139419@qq.com" }
+  spec.author       = { "黄常翁" => "599139419@qq.com" }
   
   # 支持平台
   spec.platform     = :ios, "9.0"
