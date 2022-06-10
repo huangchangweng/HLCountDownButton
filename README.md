@@ -13,6 +13,10 @@ pod 'HLCountDownButton', '1.0.4'
 ```shell
 error: IB Designables: Failed to render and update auto layout status for ViewController (BYZ-38-t0r): Failed to load designables from path (null)
 ```
+# Demonstration
+![image](https://github.com/huangchangweng/HLCountDownButton/blob/main/QQ20220610-112617.gif)
+![image](https://github.com/huangchangweng/HLCountDownButton/blob/main/QQ20220610-112252.gif)
+
 可设置属性:<p>
 
 ``` objc
