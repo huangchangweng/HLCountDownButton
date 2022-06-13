@@ -1,5 +1,5 @@
 # HLCountDownButton
-倒计时按钮，可通过xib、storyboard自定义样式
+倒计时按钮，可通过xib、storyboard自定义样式[博客地址](https://www.jianshu.com/p/ebd3a27389a2)
 
 ✅  应用切换前后台计时准确
 
