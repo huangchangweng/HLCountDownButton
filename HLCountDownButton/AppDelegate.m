@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HLCountDownButton.h"
 
 @interface AppDelegate ()
 
@@ -15,7 +16,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // 全局设置HLCountDownButton样式
+//    [HLCountDownButton appearance].highlightedColor = [UIColor redColor];
+    
     return YES;
 }
 
