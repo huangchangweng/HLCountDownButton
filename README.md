@@ -6,14 +6,17 @@
 ##### 支持使用CocoaPods引入, Podfile文件中添加:
 
 ``` objc
-pod 'HLCountDownButton', '1.0.5'
+pod 'HLCountDownButton', '1.0.6'
 ```
 注意：需要在`Podfile`中添加`use_frameworks!`，不然在xib、storyboard中渲染会报以下错误：
 
 ```shell
 error: IB Designables: Failed to render and update auto layout status for ViewController (BYZ-38-t0r): Failed to load designables from path (null)
 ```
+注意：如果按钮出现**闪烁**现象，那就是倒计时按钮类型不是`UIButtonTypeCustom`。
+
 # Demonstration
+
 ![image](https://github.com/huangchangweng/HLCountDownButton/blob/main/QQ20220610-112617.gif)
 ![image](https://github.com/huangchangweng/HLCountDownButton/blob/main/QQ20220610-112252.gif)
 
@@ -40,6 +43,8 @@ error: IB Designables: Failed to render and update auto layout status for ViewCo
 @property (nonatomic, assign) IBInspectable CGFloat borderWidth UI_APPEARANCE_SELECTOR;
 /// 倒计时长，默认60s
 @property (nonatomic, assign) IBInspectable NSInteger countDownSize UI_APPEARANCE_SELECTOR;
+/// 点击后是否自动倒计时（如果为NO，需要自己调用startCountDown触发倒计时），默认YES
+@property (nonatomic, assign) IBInspectable BOOL autoCountDown UI_APPEARANCE_SELECTOR;
 ```
 
 # GlobalSetting
@@ -58,6 +63,10 @@ iOS 9.0 +, Xcode 7.0 +
 
 # Version
 
+* 1.0.6 :
+
+  添加`autoCountDown`属性、添加`startCountDown`方法。增加组件灵活性。
+  
 * 1.0.5 :
 
   添加全局设置样式功能

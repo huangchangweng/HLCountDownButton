@@ -18,10 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8g-bU-mzL" customClass="HLCountDownButton">
-                                <rect key="frame" x="147" y="204" width="120" height="40"/>
+                                <rect key="frame" x="171" y="204" width="72" height="40"/>
                                 <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="HfH-bi-Dge"/>
                                     <constraint firstAttribute="height" constant="40" id="nb2-eV-ZVp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -88,10 +87,14 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsZ-l9-h6G" customClass="HLCountDownButton">
-                                <rect key="frame" x="171" y="143" width="72" height="29"/>
+                                <rect key="frame" x="164" y="143" width="86" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="normalTitle" value="非自动倒计时"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoCountDown" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -107,6 +110,9 @@
                             <constraint firstItem="LsZ-l9-h6G" firstAttribute="centerX" secondItem="Y8g-bU-mzL" secondAttribute="centerX" id="zL1-m1-UTH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="noAutoCountDownButton" destination="LsZ-l9-h6G" id="DTN-KU-XYH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,7 +124,7 @@
             <size key="intrinsicContentSize" width="43" height="29"/>
         </designable>
         <designable name="LsZ-l9-h6G">
-            <size key="intrinsicContentSize" width="72" height="29"/>
+            <size key="intrinsicContentSize" width="86" height="29"/>
         </designable>
         <designable name="RRQ-U8-9Iz">
             <size key="intrinsicContentSize" width="30" height="29"/>

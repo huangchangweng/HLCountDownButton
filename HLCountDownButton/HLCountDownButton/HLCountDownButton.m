@@ -83,6 +83,7 @@
     _hlType = HLCountDownButtonTypeNormal;
     _countDownSize = 60;
     _hlEnabled = YES;
+    _autoCountDown = YES;
 
     [self setTitle:_normalTitle forState:UIControlStateNormal];
     [self setupStyle];
@@ -165,9 +166,7 @@
     [self setTitle:self.normalTitle forState:0];
 }
 
-#pragma mark - Response Event
-
-- (void)tapAction:(UIButton *)sender
+- (void)startCountDown
 {
     self.userInteractionEnabled = NO;
     self.haveBeenIn = YES;
@@ -176,9 +175,6 @@
     dispatch_queue_t queue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     _timer = timer;
-    if (self.startBlock) {
-        self.startBlock();
-    }
     dispatch_source_set_timer(timer, dispatch_walltime(NULL,0), 1.0*NSEC_PER_SEC,0); //每秒执行
     dispatch_source_set_event_handler(timer, ^{
         if(self.timeout <= 0){//倒计时结束,关闭
@@ -202,6 +198,19 @@
         }
     });
     dispatch_resume(timer);
+}
+
+#pragma mark - Response Event
+
+- (void)tapAction:(UIButton *)sender
+{
+    if (self.startBlock) {
+        self.startBlock();
+    }
+    
+    if (self.autoCountDown) {
+        [self startCountDown];
+    }
 }
 
 #pragma mark - Setter

@@ -36,12 +36,15 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable CGFloat borderWidth UI_APPEARANCE_SELECTOR;
 /// 倒计时长，默认60s
 @property (nonatomic, assign) IBInspectable NSInteger countDownSize UI_APPEARANCE_SELECTOR;
-
+/// 点击后是否自动倒计时（如果为NO，需要自己调用startCountDown触发倒计时），默认YES
+@property (nonatomic, assign) IBInspectable BOOL autoCountDown UI_APPEARANCE_SELECTOR;
 
 /// 点击回调
 @property (nonatomic, strong) void(^startBlock)(void);
 /// 重置
 - (void)reset;
+/// 开始倒计时
+- (void)startCountDown;
 
 @end
 
