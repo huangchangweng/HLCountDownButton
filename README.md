@@ -63,6 +63,10 @@ iOS 9.0 +, Xcode 7.0 +
 
 # Version
 
+* 1.0.7 :
+
+  修复重置按钮崩溃问题
+  
 * 1.0.6 :
 
   添加`autoCountDown`属性、添加`startCountDown`方法。增加组件灵活性。

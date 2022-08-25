@@ -161,7 +161,9 @@
 - (void)reset
 {
     self.haveBeenIn = NO;
-    dispatch_source_cancel(_timer);
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+    }
     self.userInteractionEnabled = YES;
     [self setTitle:self.normalTitle forState:0];
 }
